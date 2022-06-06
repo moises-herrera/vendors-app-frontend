@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import VendorsContext from "../context/VendorsContext";
 import api from "../utils/api";
 
@@ -10,24 +10,26 @@ function Form() {
     setFile(e.target.files[0]);
   };
 
-  const handleSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append("file", data);
+  const handleSubmit = useCallback(
+    async (data) => {
+      const formData = new FormData();
+      formData.append("file", data);
 
-    try {
-      const { data } = await api.post(`/vendors`, formData);
-      console.log(data);
-      setVendors(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+      try {
+        const { data } = await api.post(`/vendors`, formData);
+        setVendors(data);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [setVendors]
+  );
 
   useEffect(() => {
     if (file) {
       handleSubmit(file);
     }
-  }, [file]);
+  }, [file, handleSubmit]);
 
   return (
     <>
