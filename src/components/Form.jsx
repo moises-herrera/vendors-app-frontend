@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import VendorsContext from "../context/VendorsContext";
 import api from "../utils/api";
 
 function Form() {
+  const [, setVendors] = useContext(VendorsContext);
   const [file, setFile] = useState(undefined);
 
   const handleFileChange = (e) => {
@@ -12,7 +14,13 @@ function Form() {
     const formData = new FormData();
     formData.append("file", data);
 
-    await api.post(`/vendors`, formData);
+    try {
+      const { data } = await api.post(`/vendors`, formData);
+      console.log(data);
+      setVendors(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
