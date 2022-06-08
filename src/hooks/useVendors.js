@@ -1,4 +1,6 @@
 import { useContext } from "react";
 import VendorsContext from "../context/VendorsContext";
 
-export default () => useContext(VendorsContext);
+const useVendors = () => useContext(VendorsContext);
+
+export default useVendors;

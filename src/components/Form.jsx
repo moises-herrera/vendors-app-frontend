@@ -43,8 +43,8 @@ function Form() {
             accept=".txt"
             onChange={handleFileChange}
           />
-          <span className="py-2 px-6 bg-blue-600 text-white rounded-full cursor-pointer">
-            Upload
+          <span className="py-2 px-6 bg-primary text-white rounded-full cursor-pointer hover:bg-secondary">
+            Subir archivo
           </span>
         </label>
       </form>

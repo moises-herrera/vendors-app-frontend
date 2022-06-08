@@ -4,10 +4,12 @@ import Form from "./Form";
 
 function Home() {
   return (
-    <div className="w-screen h-screen">
-      <h1 className="pt-3 text-xl font-bold text-center">Vendors App</h1>
+    <div className="w-screen h-screen p-4">
+      <h1 className="mt-3 text-2xl font-bold text-center font-rubik">
+        Visualización de datos de Vendedores
+      </h1>
       <Chart />
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center mt-4">
         <Form />
       </div>
     </div>
